@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_6">6dp</dimen>
+    <dimen name="spacing_4">4dp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
+
+    <dimen name="height_searchbox">40dp</dimen>
+
+    <dimen name="icon_18">18dp</dimen>
+    <dimen name="icon_24">24dp</dimen>
+    <dimen name="icon_26">26dp</dimen>
+    <dimen name="icon_16">16dp</dimen>
+
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="icon_28">28dp</dimen>
+    <dimen name="height_dialog_image">200dp</dimen>
+    <dimen name="text_17">17sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_13">13sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="spacing_2">2dp</dimen>
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="icon_20">20dp</dimen>
+    <dimen name="image_135">135dp</dimen>
+    <dimen name="text_15">15sp</dimen>
+    <dimen name="height_button_34">34dp</dimen>
+    <dimen name="radius_18">18dp</dimen>
+
+    <dimen name="loader_size_30">30dp</dimen>
+
+    <!-- IMAGE SIZE -->
+    <dimen name="product_image_size">160dp</dimen>
+
+    <!-- TEXT SIZES -->
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_9">9sp</dimen>
+
+    <!-- RATING STAR SIZE -->
+    <dimen name="icon_14">14dp</dimen>
+
+
+    <!-- BUTTON HEIGHT -->
+    <dimen name="height_show_info_btn">34dp</dimen>
+
+    <!-- BUTTON PADDING -->
+    <dimen name="btn_padding_16">16dp</dimen>
+
+    <!-- CORNER RADIUS -->
+    <dimen name="corner_18">18dp</dimen>
+
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_40">40dp</dimen>
+    <dimen name="spacing_25">25dp</dimen>
+
+    <dimen name="empty_image_size">180dp</dimen>
+    <dimen name="btn_height_48">48dp</dimen>
+
+    <dimen name="text_20">20sp</dimen>
+
+
+
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_20"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Illustration -->
+        <ImageView
+            android:id="@+id/imgEmpty"
+            android:layout_width="@dimen/empty_image_size"
+            android:layout_height="@dimen/empty_image_size"
+            android:layout_marginTop="@dimen/spacing_40"
+            android:src="@drawable/ic_imgempty"
+            android:contentDescription="@string/app_name" />
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_header"
+            android:textSize="@dimen/text_20"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/spacing_20" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tvSub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_subtitle"
+            android:textSize="@dimen/text_14"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_8" />
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/btnTryAgain"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height_48"
+            android:text="@string/empty_try_again"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/color_btn_primary"
+            android:layout_marginTop="@dimen/spacing_25" />
+
+    </LinearLayout>
+</ScrollView>

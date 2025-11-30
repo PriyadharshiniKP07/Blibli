@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:padding="@dimen/spacing_16"
+    android:background="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- CLOSE BUTTON -->
+        <ImageView
+            android:id="@+id/btnCloseDesc"
+            android:layout_width="@dimen/icon_28"
+            android:layout_height="@dimen/icon_28"
+            android:padding="@dimen/spacing_4"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--        &lt;!&ndash; IMAGE GUIDELINES FOR SAFE RESIZING &ndash;&gt;-->
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:id="@+id/guidelineStart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintGuide_begin="0dp"-->
+<!--            android:orientation="vertical"/>-->
+
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:id="@+id/guidelineEnd"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintGuide_end="0dp"-->
+<!--            android:orientation="vertical"/>-->
+
+        <!-- PRODUCT IMAGE (NO CROPPING ON TABLET) -->
+        <ImageView
+            android:id="@+id/dialogImgProduct"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_dialog_image"
+            android:layout_marginTop="@dimen/spacing_12"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_image_placeholder"
+            app:layout_constraintTop_toBottomOf="@id/btnCloseDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- TITLE -->
+        <TextView
+            android:id="@+id/dialogTxtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_16"
+            android:textSize="@dimen/text_16"
+            android:ellipsize="end"
+            android:maxLines="20"
+            app:layout_constraintTop_toBottomOf="@id/dialogImgProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/dialogLayoutPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_8"
+            app:flexWrap="wrap"
+            app:alignItems="center"
+            app:justifyContent="flex_start"
+            app:layout_constraintTop_toBottomOf="@id/dialogTxtTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- PRICE -->
+            <TextView
+                android:id="@+id/dialogTxtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_price_blue"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold"
+                android:layout_marginEnd="@dimen/spacing_8"/>
+
+            <!-- STRIKE -->
+            <TextView
+                android:id="@+id/dialogTxtStrike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_strike_grey"
+                android:textSize="@dimen/text_12"
+                android:layout_marginEnd="@dimen/spacing_8"/>
+
+            <!-- DISCOUNT -->
+            <TextView
+                android:id="@+id/dialogTxtDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/spacing_6"
+                android:paddingRight="@dimen/spacing_6"
+                android:paddingTop="@dimen/spacing_2"
+                android:paddingBottom="@dimen/spacing_2"
+                android:textSize="@dimen/text_11"
+                android:textColor="@color/color_discount_red"
+                android:background="@drawable/bg_discount_badge"/>
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+        <!-- FREE SHIPPING -->
+        <TextView
+            android:id="@+id/dialogTxtFree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_6"
+            android:text="@string/text_free_gift"
+            android:textSize="@dimen/text_12"
+            android:textColor="@color/color_green_free"
+            android:paddingLeft="@dimen/spacing_6"
+            android:paddingRight="@dimen/spacing_6"
+            android:paddingTop="@dimen/spacing_2"
+            android:paddingBottom="@dimen/spacing_2"
+            android:background="@drawable/bg_green_tag"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/dialogLayoutPrice"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- RATING -->
+        <LinearLayout
+            android:id="@+id/dialogLayoutRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_6"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/dialogTxtFree"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/dialogImgRatingIcon"
+                android:layout_width="@dimen/icon_16"
+                android:layout_height="@dimen/icon_16"
+                android:src="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/dialogTxtRatingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_4"
+                android:textSize="@dimen/text_13" />
+        </LinearLayout>
+
+        <!-- VERIFIED - BADGE - LOCATION -->
+        <LinearLayout
+            android:id="@+id/dialogLayoutBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_8"
+            app:layout_constraintTop_toBottomOf="@id/dialogLayoutRating"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/dialogImgVerified"
+                android:layout_width="@dimen/icon_18"
+                android:layout_height="@dimen/icon_18"
+                android:layout_marginEnd="@dimen/spacing_4"
+                android:src="@drawable/ic_verified"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/dialogImgMerchantBadge"
+                android:layout_width="@dimen/icon_20"
+                android:layout_height="@dimen/icon_20"
+                android:layout_marginEnd="@dimen/spacing_4"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/dialogImgLocationIcon"
+                android:layout_width="@dimen/icon_18"
+                android:layout_height="@dimen/icon_18"
+                android:layout_marginEnd="@dimen/spacing_4"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/dialogTxtLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_13"
+                android:textColor="@color/color_grey_444" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

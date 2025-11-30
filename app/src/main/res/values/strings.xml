@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BlibliSearch</string>
+    <string name="search_hint">cari produk kamu...</string>
+    <string name="text_add_address">Tambah alamat</string>
+    <string name="text_shop_fun"> biar belanja lebih asyik.</string>
+    <string name="text_free_gift">Hadiah gratis</string>
+    <string name="text_show_info">Show Info</string>
+    <string name="text_free_shipping">Hadiah gratis</string>
+    <string name="empty_header">Produknya belum ada</string>
+    <string name="empty_subtitle">Silakan coba kata pencarian lainnya untuk menemukan produk yang kamu cari.</string>
+    <string name="empty_try_again">Coba kata pencarian lain</string>
+
+
+
+</resources>
