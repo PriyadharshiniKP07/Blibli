@@ -70,6 +70,10 @@ object Constants {
     const val REAL_BASE_URL = "https://www.blibli.com/"
     const val CONTEXTUAL_PRICE_ENABLED = true
 
+    const val DEFAULT_SEARCH_TERM = "samsung"
+    const val DEFAULT_PAGE = 1
+    const val DEFAULT_START = 0
+
 
 
 

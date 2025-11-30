@@ -18,10 +18,10 @@
 
         <activity android:name=".MainActivity" />
 
-        <activity android:name=".view.SearchActivity" />
+<!--        <activity android:name=".view.SearchActivity" />-->
 
         <activity
-            android:name=".view.HomeActivity"
+            android:name=".view.SearchActivity"
             android:exported="true">
 
             <intent-filter>

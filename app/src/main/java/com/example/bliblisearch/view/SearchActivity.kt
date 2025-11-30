@@ -43,24 +43,29 @@ class SearchActivity : AppCompatActivity() {
         val emptyBinding = LayoutEmptyStateBinding.bind(binding.emptyStateView.getChildAt(0))
 
         emptyBinding.btnTryAgain.setOnClickListener {
+            suppressTextWatcher = true
             binding.etSearch.setText("")
-            viewModel.resetToHome()
-            viewModel.clearSearchQuery()
-            finish()}
+            suppressTextWatcher = false
+            updateClearIcon()
+            viewModel.resetToDefaultSearch()}
 
             setupRecycler()
         setupObservers()
         setupSearchBox()
 
-        // If query was sent from HomeActivity, populate and search immediately
-        intent.getStringExtra("query")?.let { q ->
+//        // If query was sent from HomeActivity, populate and search immediately
+//        intent.getStringExtra("query")?.let { q ->
+//
+//            suppressTextWatcher = true          // prevent text listener from triggering
+//            binding.etSearch.setText(q)
+//            binding.etSearch.setSelection(binding.etSearch.text.length)
+//            suppressTextWatcher = false         // re-enable listener
+//
+//            viewModel.search(q)
+//        }
 
-            suppressTextWatcher = true          // prevent text listener from triggering
-            binding.etSearch.setText(q)
-            binding.etSearch.setSelection(binding.etSearch.text.length)
-            suppressTextWatcher = false         // re-enable listener
-
-            viewModel.search(q)
+        if (savedInstanceState == null) {
+            viewModel.resetToDefaultSearch()
         }
     }
 
@@ -87,8 +92,21 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.pagedProducts.observe(this) { list ->
-            adapter.updateData(list ?: emptyList())
+
+        viewModel.pagedProducts.observe(this) { newList ->
+
+            val wasEmpty = adapter.itemCount == 0
+            val isResetSearch = viewModel.isNewSearchTriggered // <-- we’ll set this flag below
+
+            adapter.updateData(newList ?: emptyList())
+
+            // 👇 Scroll to top only if new search or reset, not pagination
+            if (isResetSearch || wasEmpty) {
+                binding.rvProducts.post {
+                    binding.rvProducts.scrollToPosition(0)
+                }
+                viewModel.isNewSearchTriggered = false
+            }
         }
 
         viewModel.loadingPage.observe(this) { loading ->
@@ -101,43 +119,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setupSearchBox() {
-//        binding.etSearch.addTextChangedListener { txt ->
-//            val q = txt?.toString()?.trim().orEmpty()
-//
-//            binding.iconClear.visibility = if (q.isNotEmpty()) View.VISIBLE else View.GONE
-//
-//            // If empty -> treat as cleared search and close (return to Home)
-//            if (q.isEmpty()) {
-//                // finish so Home onResume can reset to mock list
-//                finish()
-//                return@addTextChangedListener
-//            }
-//
-//            if (q.length >= Constants.MIN_SEARCH_LENGTH) {
-//                viewModel.search(q)
-//            }
-//        }
-//
-//        // Support IME 'Search' action explicitly
-//        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
-//            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-//                val q = binding.etSearch.text?.toString()?.trim().orEmpty()
-//                if (q.length >= Constants.MIN_SEARCH_LENGTH) {
-//                    viewModel.search(q)
-//                }
-//                true
-//            } else {
-//                false
-//            }
-//        }
-//
-//        binding.iconClear.setOnClickListener {
-//            binding.etSearch.setText("")
-//            // finish to go back to Home (Home onResume will reset list)
-//            finish()
-//        }
-//    }
+
 
     private fun setupSearchBox() {
 
@@ -147,7 +129,7 @@ class SearchActivity : AppCompatActivity() {
 
             val query = txt?.toString()?.trim().orEmpty()
 
-            binding.iconClear.visibility = if (query.isNotEmpty()) View.VISIBLE else View.GONE
+            updateClearIcon()
 
             // Cancel previous scheduled search
             searchJob?.cancel()
@@ -156,8 +138,7 @@ class SearchActivity : AppCompatActivity() {
             searchJob = lifecycleScope.launch {
                 delay(1000)
                 if (query.isEmpty()) {
-                    finish()
-                    return@launch
+                    viewModel.resetToDefaultSearch()
                 }
 
                 if (query.length >= Constants.MIN_SEARCH_LENGTH) {
@@ -169,9 +150,10 @@ class SearchActivity : AppCompatActivity() {
         binding.iconClear.setOnClickListener {
             suppressTextWatcher = true
             binding.etSearch.setText("")
-            viewModel.clearSearchQuery()
             suppressTextWatcher = false
-            finish()
+            searchJob?.cancel()
+            updateClearIcon()
+            viewModel.resetToDefaultSearch()
         }
 
         binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
@@ -180,9 +162,17 @@ class SearchActivity : AppCompatActivity() {
                 if (query.length >= Constants.MIN_SEARCH_LENGTH) {
                     viewModel.search(query)
                 }
+                if(query.isEmpty()) {
+                    viewModel.resetToDefaultSearch()
+                }
                 true
             } else false
         }
     }
+    private fun updateClearIcon() {
+        binding.iconClear.visibility =
+            if (binding.etSearch.text?.isNotEmpty() == true) View.VISIBLE else View.GONE
+    }
+
 
 }

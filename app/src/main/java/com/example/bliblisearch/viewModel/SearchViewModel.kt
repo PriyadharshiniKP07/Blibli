@@ -21,6 +21,9 @@ class SearchViewModel @Inject constructor(
     private var currentStart = 0
     private var totalPages = 1
 
+    var isNewSearchTriggered: Boolean = false
+
+
     private val results = mutableListOf<Product>()
 
     private val pageSize = Constants.PAGE_SIZE
@@ -36,23 +39,29 @@ class SearchViewModel @Inject constructor(
 
     /** Start a fresh search. If query is empty, caller should handle showing home/clearing. */
     fun search(query: String) {
-        val q = query.trim()
-        if (q == currentQuery) return
 
-        currentQuery = q
-        currentPage = 1
-        currentStart = 0
-        totalPages = 1
-        results.clear()
+        val trimmed = query.trim()
 
-        if (q.isEmpty()) {
-            // treat as cleared search
-            clear()
+        if (trimmed.isEmpty()) {
+            resetToDefaultSearch()
             return
         }
 
-        fetch(reset = true)
+        // Detect new search vs pagination continuation
+        val isNewQuery = trimmed != currentQuery
+
+        if (isNewQuery) {
+            // Reset paging
+            currentPage = 1
+            currentStart = 0
+            results.clear()
+        }
+
+        currentQuery = trimmed
+
+        fetch(reset = isNewQuery)
     }
+
 
     fun loadNextSearchPage() {
         if (_loadingPage.value == true) return
@@ -110,18 +119,16 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    fun clearSearchQuery() {
-        currentQuery = ""
-    }
-  fun resetToHome() {
-      // Clear stored search value if any
-      currentQuery = ""
 
-      viewModelScope.launch {
-          // Emit home data again (mock list from repository)
-          val homeItems = repo.fetchProducts()
-          _pagedProducts.value = homeItems
-      }
-  }
+    fun resetToDefaultSearch() {
+        currentPage = Constants.DEFAULT_PAGE
+        currentStart = Constants.DEFAULT_START
+        results.clear()
+
+        currentQuery = Constants.DEFAULT_SEARCH_TERM
+
+        fetch(reset = true)
+    }
+
 
 }

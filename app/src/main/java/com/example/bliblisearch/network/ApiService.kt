@@ -10,10 +10,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("products")
-    suspend fun getProductsMock(
-        @Header("Use-Mock") useMock: String = "true"
-    ): Response<List<Product>>
+//    @GET("products")
+//    suspend fun getProductsMock(
+//        @Header("Use-Mock") useMock: String = "true"
+//    ): Response<List<Product>>
 
     @GET("backend/search/products")
     suspend fun searchProducts(

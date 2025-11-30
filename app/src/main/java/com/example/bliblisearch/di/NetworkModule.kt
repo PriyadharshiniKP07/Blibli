@@ -4,7 +4,6 @@ import android.content.Context
 import com.example.bliblisearch.util.Constants
 import com.example.bliblisearch.network.ApiService
 import com.example.bliblisearch.network.HeaderInterceptor
-import com.example.bliblisearch.network.MockInterceptor
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -23,11 +22,7 @@ import javax.inject.Named
 @Module
 object NetworkModule {
 
-    // ---------------- MOCK INTERCEPTOR ----------------
-    @Provides
-    fun provideMockInterceptor(@ApplicationContext context: Context): MockInterceptor {
-        return MockInterceptor(context)
-    }
+
 
     // ---------------- HEADER INTERCEPTOR ----------------
     @Provides
@@ -36,27 +31,7 @@ object NetworkModule {
         return HeaderInterceptor()
     }
 
-    // ---------------- MOCK OKHTTP ----------------
-    @Provides
-    @Singleton
-    @Named("MockOkHttp")
-    fun provideMockOkHttp(
-        headerInterceptor: HeaderInterceptor,
-        mockInterceptor: MockInterceptor
-    ): OkHttpClient {
 
-        val logger = HttpLoggingInterceptor().apply {
-            level = Constants.LOG_LEVEL
-        }
-
-        return OkHttpClient.Builder()
-            .addInterceptor(logger)
-            .addInterceptor(headerInterceptor)
-            .addInterceptor(mockInterceptor)
-            .connectTimeout(Constants.TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .readTimeout(Constants.TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .build()
-    }
 
     // ---------------- REAL OKHTTP ----------------
     @Provides
@@ -78,20 +53,6 @@ object NetworkModule {
             .build()
     }
 
-    // ---------------- MOCK RETROFIT ----------------
-    @Provides
-    @Singleton
-    @Named("MockRetrofit")
-    fun provideMockRetrofit(
-        @Named("MockOkHttp") client: OkHttpClient
-    ): Retrofit {
-
-        return Retrofit.Builder()
-            .baseUrl(Constants.MOCK_BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(Gson()))
-            .build()
-    }
 
     // ---------------- REAL RETROFIT ----------------
     @Provides
@@ -108,14 +69,6 @@ object NetworkModule {
             .build()
     }
 
-    // ---------------- API SERVICES ----------------
-
-    @Provides
-    @Singleton
-    @Named("MockApi")
-    fun provideMockApi(
-        @Named("MockRetrofit") retrofit: Retrofit
-    ): ApiService = retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton
