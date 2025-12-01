@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class ProductRepository @Inject constructor(
-    @Named("RealApi") private val realApi: ApiService
+private val realApi: ApiService
 ) {
 
 

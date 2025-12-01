@@ -10,6 +10,31 @@
     <string name="empty_subtitle">Silakan coba kata pencarian lainnya untuk menemukan produk yang kamu cari.</string>
     <string name="empty_try_again">Coba kata pencarian lain</string>
 
-
+    <string name="enter_username">Enter Email or Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="daftar">Dafter</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_text">Login</string>
+    <string name="fast_login_text">Log in lebih cepat dengan</string>
+    <string name="no_account_text">Belum punya akun ?</string>
+    <string name="register_text">Daftar, yuk!</string>
+    <string name="agreement_text">Dengan log in, kamu menyetujui Kebijakan Privasi dan Syarat Ketentuan Blibli ticket</string>
+    <string name="ticket_image_desc">Ticket image</string>
+    <string name="register_header">Lengkapi Detail Akun</string>
+    <string name="register_info">Akun yang lagi kamu buat ini bisa dipakai di semua aplikasi di ekosistem Blibli Tiket, lho!</string>
+    <string name="hint_name">Nama lengkap*</string>
+    <string name="email_helper">Seperti di KTP/Paspor/SIM.</string>
+    <string name="hint_phone">Nomor HP*</string>
+    <string name="hint_email">Email*</string>
+    <string name="hint_password">Password*</string>
+    <string name="btn_register">Daftar</string>
+    <string name="register_agreement">Dengan log in, kamu menyetujui Kebijakan Privasi dan Syarat Ketentuan Blibli ticket</string>
+    <string name="welcome_user_text">Welcome, %1$s! Please Logout.</string>
+    <string name="homepage_logout_btn">Logout</string>
 
 </resources>

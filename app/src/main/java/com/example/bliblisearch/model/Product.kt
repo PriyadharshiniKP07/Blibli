@@ -4,7 +4,7 @@ data class Product(
     val name: String?,            // title in JSON = "name"
     val brand: String?,
     val location: String?,
-
+    val id : String?,
     val price: Price?,            // matches JSON.price object
 
     val review: Review?,          // rating object

@@ -4,4 +4,15 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
     </style>
+
+    <style name="TextInputLayoutHighContrast" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/hint_black</item>
+        <item name="helperTextTextColor">@color/text_black</item>
+        <item name="errorTextColor">@color/error_red</item>
+    </style>
+
+    <style name="TextInputEditTextHighContrast" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textColorHint">@color/hint_black</item>
+    </style>
 </resources>

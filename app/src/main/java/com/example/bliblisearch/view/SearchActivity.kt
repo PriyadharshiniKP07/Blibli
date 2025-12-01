@@ -3,6 +3,7 @@ package com.example.bliblisearch.view
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
@@ -18,6 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 import androidx.lifecycle.lifecycleScope
+import com.example.bliblisearch.viewModel.CartViewModel
+import com.google.gson.Gson
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 
@@ -25,12 +28,30 @@ import kotlinx.coroutines.delay
 @AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
 
+    private val cartViewModel: CartViewModel by viewModels()
     private lateinit var binding: ActivitySearchBinding
     private val viewModel: SearchViewModel by viewModels()
-    private val adapter = ProductAdapter()
+    private val adapter = ProductAdapter { product ->
+        val user = SharedPreferenceManager.getLoggedInUser(this)
+        if (user == null) {
+            Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show()
+            return@ProductAdapter
+        }
+
+        val productId = product.id ?: product.name.orEmpty()
+        val json = Gson().toJson(product)
+
+        cartViewModel.initUser(user)          // <-- IMPORTANT
+        cartViewModel.addItemToCart(product)
+
+    }
+
+
     private var suppressTextWatcher = false
 
     private var searchJob: Job? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,6 +138,11 @@ class SearchActivity : AppCompatActivity() {
             binding.emptyStateView.visibility = if (empty) View.VISIBLE else View.GONE
             binding.rvProducts.visibility = if (empty) View.GONE else View.VISIBLE
         }
+
+        cartViewModel.toast.observe(this) { msg ->
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 
@@ -173,6 +199,8 @@ class SearchActivity : AppCompatActivity() {
         binding.iconClear.visibility =
             if (binding.etSearch.text?.isNotEmpty() == true) View.VISIBLE else View.GONE
     }
+
+
 
 
 }

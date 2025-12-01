@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blue">#0066FF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#7C7C7C</color>
@@ -16,6 +17,16 @@
     <color name="search_icon_grey">#808080</color>
     <color name="color_free_green">#0C8F00</color>
     <color name="color_location_grey">#444444</color>
+    <color name="gray_text">#424242</color>
+    <color name="card_bg_color">#CCE9FF</color>
+    <color name="gray">#424242</color>
+    <color name="blue_accent">#007AFF</color>
+    <color name="primary_blue">#0066FF</color>
+    <color name="black_text">#000000</color>
+    <color name="white_text">#FFFFFF</color>
+    <color name="text_black">#000000</color>
+    <color name="hint_black">#000000</color> <!-- for hint -->
+    <color name="error_red">#B00020</color> <!-- Material default error -->
 
 
 

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- REQUIRED for Retrofit/OkHttp/Hilt networking -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,20 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlibliSearch">
 
-        <activity android:name=".MainActivity" />
-
-<!--        <activity android:name=".view.SearchActivity" />-->
-
+        <!-- Change this to whichever is your START screen -->
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
+        <activity android:name=".view.CartActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.SearchActivity" />
     </application>
 
 </manifest>

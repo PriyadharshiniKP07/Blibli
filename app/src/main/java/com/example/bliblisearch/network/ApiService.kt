@@ -1,5 +1,6 @@
 package com.example.bliblisearch.network
 
+import com.example.bliblisearch.model.BannerResponse
 import com.example.bliblisearch.model.BaseResponse
 import com.example.bliblisearch.model.Product
 import retrofit2.Response
@@ -25,4 +26,8 @@ interface ApiService {
         @Query("intent") intent: Boolean = true,
         @Query("showFacet") showFacet: Boolean = false
     ): BaseResponse
+
+    @GET("backend/content-api/pages/home2023/_without-content?display=mobile")
+    suspend fun getHomeBanners(): BannerResponse
+
 }

@@ -1,0 +1,196 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="@dimen/padding_zero"
+    android:background="@android:color/transparent"
+    android:clipToPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_normal"
+        android:gravity="start">
+
+        <!-- Header Text -->
+        <TextView
+            android:id="@+id/tvRegisterHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_header"
+            android:textSize="@dimen/text_size_header"
+            android:textStyle="bold"
+            android:gravity="start"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginBottom="@dimen/margin_bottom_medium"/>
+
+        <!-- Info Text -->
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_info"
+            android:background="@drawable/bg_info_box"
+            android:padding="@dimen/padding_normal"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_size_medium"
+            android:gravity="start"
+            android:lineSpacingExtra="2dp"
+            android:layout_marginBottom="@dimen/margin_bottom_medium"/>
+
+        <!-- Name Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/namelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/black_text"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_small"
+            android:layout_marginBottom="@dimen/margin_bottom_small">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_normal"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/text_size_medium"
+                android:inputType="textPersonName"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email helper text -->
+        <TextView
+            android:id="@+id/tvEmailInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email_helper"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/gray_text"
+            android:layout_marginBottom="@dimen/margin_bottom_medium"/>
+
+        <!-- Phone Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/black_text"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_small"
+            android:layout_marginBottom="@dimen/margin_bottom_medium">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_normal"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/text_size_medium"
+                android:inputType="phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emaillayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/black_text"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_small"
+            android:layout_marginBottom="@dimen/margin_bottom_medium">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_normal"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/text_size_medium"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Password Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/black_text"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_small"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_small"
+            app:endIconMode="password_toggle"
+            android:layout_marginBottom="@dimen/margin_bottom_large">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_normal"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/text_size_medium"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Register Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnregister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_large"
+            android:text="@string/btn_register"
+            android:textSize="@dimen/text_size_button"
+            android:textColor="@color/white_text"
+            android:padding="@dimen/padding_normal"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:backgroundTint="@color/primary_blue"
+            app:rippleColor="@color/primary_blue" />
+
+        <!-- Agreement Text -->
+        <TextView
+            android:id="@+id/agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/agreement_height"
+            android:layout_gravity="center"
+            android:text="@string/register_agreement"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_size_medium"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/margin_top_small"/>
+
+        <!-- Ticket Image -->
+        <ImageView
+            android:id="@+id/imgticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ticket"
+            android:layout_marginTop="@dimen/margin_top_small"
+            android:layout_gravity="center"
+            android:contentDescription="@string/ticket_image_desc"
+            android:layout_marginBottom="@dimen/margin_bottom_xlarge"/>
+    </LinearLayout>
+</ScrollView>

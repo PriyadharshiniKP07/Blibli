@@ -199,4 +199,24 @@
     android:layout_marginBottom="0dp" />
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_show_info_btn"
+        android:text="Remove"
+        android:textSize="@dimen/text_12"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/color_btn_primary"
+        android:paddingStart="@dimen/btn_padding_16"
+        android:paddingEnd="@dimen/btn_padding_16"
+        android:visibility="gone"
+        app:cornerRadius="@dimen/corner_18"
+
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/imgContainer"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="0dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

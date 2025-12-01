@@ -20,7 +20,8 @@ import com.example.bliblisearch.databinding.ItemProductBinding
 import com.example.bliblisearch.model.Product
 import com.example.bliblisearch.util.Constants
 
-class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductAdapter(private val onAddToCart: (Product) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items = mutableListOf<Product>()
     var isLoading = false
@@ -229,6 +230,14 @@ class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val dialog = AlertDialog.Builder(context).setView(binding.root).create()
         dialog.window?.setBackgroundDrawable(ColorDrawable(0x00000000.toInt()))
 
+        binding.btnAddToCart.setOnClickListener {
+            onAddToCart(product)   // ViewModel will ensure ID & JSON
+            dialog.dismiss()
+        }
+
+
+        dialog.show()
+
         // IMAGE
         val dialogRawImage = product.images?.firstOrNull()
         val dialogImage = dialogRawImage?.takeIf { !it.isNullOrBlank() && it.lowercase() != "none" }
@@ -386,6 +395,20 @@ class ProductAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         return titleValid && priceValid
     }
+
+    private fun ensureProductId(p: Product): String {
+        val cleanId = p.id?.trim()?.lowercase()
+
+        if (!cleanId.isNullOrBlank()) return cleanId
+
+        // Fallback ID (prevents duplicates of visually identical items)
+        return listOf(
+            p.name?.trim()?.lowercase(),
+            p.price?.priceDisplay?.trim()?.lowercase(),
+            p.images?.firstOrNull()?.trim()?.lowercase()
+        ).filterNotNull().joinToString("_")
+    }
+
 
 
 }

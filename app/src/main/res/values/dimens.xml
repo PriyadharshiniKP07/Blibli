@@ -60,6 +60,42 @@
 
     <dimen name="text_20">20sp</dimen>
 
+    <!-- Paddings -->
+    <dimen name="padding_zero">0dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_top_small">4dp</dimen>
+    <dimen name="margin_top_medium">16dp</dimen>
+    <dimen name="margin_top_large">25dp</dimen>
+    <dimen name="margin_bottom_small">8dp</dimen>
+    <dimen name="margin_bottom_medium">10dp</dimen>
+    <dimen name="margin_bottom_large">24dp</dimen>
+    <dimen name="margin_bottom_xlarge">100dp</dimen>
+    <dimen name="margin_end_medium">24dp</dimen>
+    <dimen name="margin_end_large">26dp</dimen>
+
+    <!-- Card & corner radius -->
+    <dimen name="card_corner_radius">25dp</dimen>
+    <dimen name="corner_radius_small">8dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">6dp</dimen> <!-- added -->
+
+    <!-- Text sizes -->
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_header">28sp</dimen>
+    <dimen name="text_size_button">20sp</dimen>
+
+    <!-- Other sizes -->
+    <dimen name="login_bg_height">300dp</dimen>
+    <dimen name="social_icon_size">60dp</dimen>
+    <dimen name="agreement_height">58dp</dimen>
+
 
 
 
